@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Write schema 
 const userSchema = new mongoose.Schema(
   {
     // field Name
