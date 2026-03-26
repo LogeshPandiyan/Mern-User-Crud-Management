@@ -1,10 +1,14 @@
+// import "bootstrap/dist/css/bootstrap.min.css"
+import UserPage from "./features/UserPage"
+import { Toaster } from "sonner";
+import "./index.css"
 
 
-import UserPage from "./components/features/UserPage"
 
 const App = () => {
   return (
     <>
+    <Toaster position="bottom-left" richColors />
     <UserPage/>
     </>
   )
