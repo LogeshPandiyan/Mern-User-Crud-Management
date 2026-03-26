@@ -3,10 +3,10 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 
 // Put user router to crud
-router.post('/createUser', userController.createUsers);
-router.get('/getAllUsers', userController.getAllUsers);
-router.get('/getAllUsers/:id', userController.getSingleUserDetail)
-router.put('/updateUser/:id', userController.updateUser);
-router.delete('/deleteUser/:id', userController.deleteUser);
+router.post('/create-user', userController.createUsers);
+router.get('/get-users', userController.getAllUsers);
+router.get('/get-users/:id', userController.getSingleUserDetail)
+router.put('/update-user/:id', userController.updateUser);
+router.delete('/delete-user/:id', userController.deleteUser);
 
 module.exports = router;

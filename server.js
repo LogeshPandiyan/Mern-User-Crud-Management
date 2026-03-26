@@ -4,7 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 
 const app = express();
 
@@ -17,10 +17,19 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('<p>Welcome User Management TAMIL!</p>');
+  res.send(`
+    <html>
+      <head>
+        <title>User Management</title>
+      </head>
+      <body>
+        <p>Welcome User Management</p>
+      </body>
+    </html>
+  `);
 });
 
-app.use('/api/users', userRoutes)
+app.use('/api/v1/users', userRoutes)
 
 // Server
 app.listen(PORT, () => {

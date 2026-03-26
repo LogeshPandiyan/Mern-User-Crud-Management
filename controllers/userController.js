@@ -1,24 +1,35 @@
 const userModel = require ('../models/userModel');
 
 // Create user details
+// Create user details
 exports.createUsers = async (req, res) => {
-     try{
-          const createUser = await userModel.create(req.body);
-          res.status(201).json({
-               success:true,
-               statusCode:201,
-               message:"User Created Successfully",
-               data :createUser
-          })
-     }
-     catch(error){
-          res.status(500).json({
-               success:false,
-               statusCode:500,
-               message: error.message || "Failed to Create User"
-          })
-     }
-}
+  try {
+    const createUser = await userModel.create(req.body);
+    res.status(201).json({
+      success: true,
+      statusCode: 201,
+      message: "User Created Successfully",
+      data: createUser
+    });
+  } catch (error) {
+    // Handle duplicate key error for unique fields
+    if (error.code === 11000) {
+      const duplicateField = Object.keys(error.keyValue)[0]; // e.g., "userEmail"
+      return res.status(400).json({
+        success: false,
+        statusCode: 400,
+        message: `${duplicateField} already exists`,
+        field: duplicateField
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      statusCode: 500,
+      message: error.message || "Failed to Create User"
+    });
+  }
+};
 
 // Read all users lists
 exports.getAllUsers = async (req,res) =>{

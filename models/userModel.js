@@ -15,10 +15,12 @@ const userSchema = new mongoose.Schema(
     userEmail: {
       type: String,
       required: true,
+      unique:true,
     },
     userContact: {
       type: String,
-      required: true
+      required: true,
+      unique:true
     },
     salary: {
       type: String
@@ -28,10 +30,6 @@ const userSchema = new mongoose.Schema(
           required: true
      },
      city:{
-          type: String,
-          required: true
-     },
-     district:{
           type: String,
           required: true
      },
